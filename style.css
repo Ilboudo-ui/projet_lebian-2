@@ -1,0 +1,560 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+    position: relative;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+:where(.dark-mode) body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.background-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+:where(.dark-mode) .background-text {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse {
+    0% { opacity: 0.1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.15; transform: translateX(-50%) scale(1.05); }
+    100% { opacity: 0.1; transform: translateX(-50%) scale(1); }
+}
+
+:where(.dark-mode) @keyframes pulse {
+    0% { opacity: 0.2; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.25; transform: translateX(-50%) scale(1.05); }
+    100% { opacity: 0.2; transform: translateX(-50%) scale(1); }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #222;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) nav {
+    background-color: #2c2c2c;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    transition: max-height 0.3s ease-in-out;
+}
+
+nav ul.hidden {
+    max-height: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+:where(.dark-mode) nav ul li a {
+    color: #fff;
+}
+
+nav ul li a:hover {
+    color: #1e90ff;
+}
+
+#theme-toggle {
+    padding: 0.5rem 1rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) #theme-toggle {
+    color: #fff;
+}
+
+#theme-toggle:hover {
+    background-color: #4682b4;
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+:where(.dark-mode) #menu-toggle {
+    color: #fff;
+}
+
+section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#home {
+    position: relative;
+    background-image: url('/images/Welcome.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: 0;
+}
+
+:where(.dark-mode) #home {
+    background-image: url('/images/Welcome.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+:where(.dark-mode) #home::before {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay in dark mode */
+}
+
+#home h1, #home p, #home .cta {
+    position: relative;
+    z-index: 1; /* Place text above the overlay */
+}
+
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+:where(.dark-mode) #home h1 {
+    color: #fff;
+}
+
+#home p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+:where(.dark-mode) #home p {
+    color: #fff;
+}
+
+#home .cta {
+    padding: 1rem 2rem;
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) #home .cta {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+#home .cta:hover {
+    background-color: #333;
+}
+
+:where(.dark-mode) #home .cta:hover {
+    background-color: #444;
+}
+
+#about {
+    position: relative;
+    background-image: url('/images/image3.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: 0;
+}
+
+:where(.dark-mode) #about {
+    background-image: url('/images/image3.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+:where(.dark-mode) #about::before {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay in dark mode */
+}
+
+#about h2, #about p {
+    position: relative;
+    z-index: 1; /* Place text above the overlay */
+}
+
+#about h2, #projects h2, #testimonials h2, #contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+:where(.dark-mode) #about h2, :where(.dark-mode) #projects h2, :where(.dark-mode) #testimonials h2, :where(.dark-mode) #contact h2 {
+    color: #fff;
+}
+
+#about p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+:where(.dark-mode) #about p {
+    color: #fff;
+}
+
+#projects {
+    background-color: #f4f4f4;
+}
+
+:where(.dark-mode) #projects {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+:where(.dark-mode) .project-card {
+    background-color: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.project-card h3 {
+    margin: 1rem 0;
+}
+
+:where(.dark-mode) .project-card h3 {
+    color: #fff;
+}
+
+.project-card p {
+    color: #333;
+}
+
+:where(.dark-mode) .project-card p {
+    color: #fff;
+}
+
+#testimonials {
+    background-color: #fff;
+}
+
+:where(.dark-mode) #testimonials {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.carousel {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) .carousel-item {
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.carousel-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+:where(.dark-mode) .carousel-item p {
+    color: #fff;
+}
+
+.carousel-item cite {
+    font-style: italic;
+    color: #555;
+}
+
+:where(.dark-mode) .carousel-item cite {
+    color: #fff;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.carousel-controls button {
+    padding: 0.5rem 1rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) .carousel-controls button {
+    color: #fff;
+}
+
+.carousel-controls button:hover {
+    background-color: #4682b4;
+}
+
+#contact {
+    background-color: #fff;
+}
+
+:where(.dark-mode) #contact {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    gap: 1rem;
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+:where(.dark-mode) input, :where(.dark-mode) textarea {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #666;
+}
+
+:where(.dark-mode) input::placeholder, :where(.dark-mode) textarea::placeholder {
+    color: #ccc;
+}
+
+button {
+    padding: 1rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+:where(.dark-mode) button {
+    color: #fff;
+}
+
+button:hover {
+    background-color: #4682b4;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    nav ul.active {
+        max-height: 300px;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    #theme-toggle {
+        margin-top: 1rem;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    #home p {
+        font-size: 1.2rem;
+    }
+
+    .background-text {
+        font-size: 5rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-item {
+        padding: 1rem;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 1.5rem;
+    }
+
+    #home p {
+        font-size: 1rem;
+    }
+
+    #about h2, #projects h2, #testimonials h2, #contact h2 {
+        font-size: 1.8rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+
+    .carousel-item p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-item cite {
+        font-size: 0.8rem;
+    }
+}
